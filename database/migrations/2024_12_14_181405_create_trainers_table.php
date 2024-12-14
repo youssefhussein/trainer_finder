@@ -12,8 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('trainers', function (Blueprint $table) {
-            $table->id();
+            $table->foreignId('trainer_id')->constrained('users', 'id')->cascadeOnDelete();
             $table->timestamps();
+            $table->date('day_time');
+            $table->string('certificate');
+            $table->enum('state', ['pending', 'accepted', 'blocked']);
         });
     }
 

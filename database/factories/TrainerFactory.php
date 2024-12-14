@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,10 @@ class TrainerFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'trainer_id' => fake()->randomElement(User::all()->pluck('id')->toArray()),
+            'day_time' => fake()->dateTimeBetween('now', '+1 year'),
+            'certificate' => fake()->text(30),
+            'state' => 'pending',
         ];
     }
 }
