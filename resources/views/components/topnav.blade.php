@@ -26,9 +26,9 @@
                      </a>
                  @endif
              @endauth
-                 <a href="{{{route("home")}}}"></a>
-                 <a href="{{{route("trainers.index")}}}"></a>
-                 <a href="{{{route("aboutus")}}}"></a>
+                 <a href="{{{route("home")}}}">Home</a>
+                 <a href="{{{route("trainers.index")}}}">Trainers</a>
+                 <a href="{{{route("aboutus")}}}">About us</a>
 
 
 

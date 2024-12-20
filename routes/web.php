@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TrainerController;
 use Illuminate\Support\Facades\Route;
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -15,13 +15,28 @@ Route::get('/home' , function () {
     return view('home');
 })->middleware(['auth', 'verified'])->name('home');
 
-Route::get('/trainers', function () {
-    return view('trainers.index');
-})->middleware(['auth', 'verified'])->name('trainers.index');
+Route::get('/trainers', [TrainerController::class,'index'])->middleware(['auth', 'verified'])->name('trainers.index');
+
 
 Route::get('/aboutus', function () {
     return view('aboutus');
 })->name('aboutus');
+
+Route::get('/admin', function () {
+    return view('admin.index');
+})->middleware(['auth', 'verified'])->name('admin.index');
+
+Route::get('/admin/trainer-applications', function () {
+    return view('admin.applications');
+})->middleware(['auth', 'verified'])->name('admin.applications.index');
+Route::get('/admin/trainer-view', function () {
+    return view('admin.trainers');
+})->middleware(['auth', 'verified'])->name('admin.trainers.index');
+Route::get('/admin/users-view', function () {
+    return view('admin.users');
+})->middleware(['auth', 'verified'])->name('admin.users.index');
+
+
 
 
 Route::middleware('auth')->group(function () {
