@@ -15,6 +15,15 @@ Route::get('/home' , function () {
     return view('home');
 })->middleware(['auth', 'verified'])->name('home');
 
+Route::get('/trainers', function () {
+    return view('trainers.index');
+})->middleware(['auth', 'verified'])->name('trainers.index');
+
+Route::get('/aboutus', function () {
+    return view('aboutus');
+})->name('aboutus');
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

@@ -1,6 +1,6 @@
  <header class="sticky ">
 
-     @if (Route::has('login'))
+{{--     @if (Route::has('login'))--}}
          <nav class="-mx-4 flex flex-1 justify-end gap-4  pe-7 py-2">
              @auth
                  <a
@@ -26,6 +26,12 @@
                      </a>
                  @endif
              @endauth
+                 <a href="{{{route("home")}}}"></a>
+                 <a href="{{{route("trainers.index")}}}"></a>
+                 <a href="{{{route("aboutus")}}}"></a>
+
+
+
          </nav>
-     @endif
+{{--     @endif--}}
  </header>
