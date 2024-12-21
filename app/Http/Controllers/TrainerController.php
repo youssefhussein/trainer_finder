@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Trainer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class TrainerController extends Controller
@@ -13,7 +14,10 @@ class TrainerController extends Controller
      */
     public function index() :View
     {
-        $trainers_Accepted = Trainer::all();
+        $trainers_Accepted = DB::table('trainers')
+                                ->where('state', '=', 'accepted')
+                                ->join('users', 'users.id', '=', 'trainers.trainer_id')
+                                ->paginate(7);
         return view('trainers.index', compact('trainers_Accepted'));
     }
 

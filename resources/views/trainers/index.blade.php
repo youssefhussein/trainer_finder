@@ -47,7 +47,24 @@
 
 <!-- Results Section -->
 <div class="results-section">
+<ul>
+    @if(count($trainers_Accepted) >0)
+        @foreach($trainers_Accepted as $trainer)
+            <li>
+               <h1>
+                {{$trainer->name}}
 
+               </h1>
+                <p>{{$trainer->state}}</p>
+
+            </li>
+        @endforeach
+        {{$trainers_Accepted->links()}}
+    @else
+        <p><strong>No Trainers at the moment!</strong></p>
+    @endif
+
+</ul>
 
 </body>
 </html>
